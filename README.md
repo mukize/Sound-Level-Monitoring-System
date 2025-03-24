@@ -12,8 +12,7 @@ Server and client code to monitor sound intensity levels using a Raspberry Pi.
 ### Server
 
 ```sh
-pip install soundcard
-python3 -m pip install soundcard
+pip install -r requirements.txt
 ```
 
 For the Raspberry Pi Lite OS, `pulseaudio` needs to be installed:
