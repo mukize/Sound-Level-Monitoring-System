@@ -1,6 +1,6 @@
 import socket
 import concurrent.futures
-from audio.soundcard import poll_noise_level
+from soundcard import poll_noise_level
 
 HOST = "127.0.0.1"
 PORT = 1234
