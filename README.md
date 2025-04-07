@@ -1,7 +1,7 @@
 
 # Sound Level Monitor System
 
-Server and client code to monitor sound intensity levels using a Raspberry Pi.
+Server and client code to monitor sound intensity levels.
 
 ## Installation
 
@@ -12,14 +12,11 @@ Server and client code to monitor sound intensity levels using a Raspberry Pi.
 ### Server
 
 ```sh
-pip install -r requirements.txt
+pip install -r server_requirements.txt
 ```
 
-For the Raspberry Pi Lite OS, `pulseaudio` needs to be installed:
+### Usage
+
 ```sh
-sudo apt install -y python3-pip python3-numpy pulseaudio
-sudo nano /usr/share/pulseaudio/alsa-mixer/profile-sets/default.conf
-# comment the block [Mapping analog-mono] with ';'
-pulseaudio -D
+python src/server.py
 ```
-
