@@ -1,7 +1,7 @@
 import pyaudio
 import numpy as np
 from typing import Generator
-from audio import seconds_to_frames, signal_decibel, SAMPLE_RATE
+from util import seconds_to_frames, signal_decibel, SAMPLE_RATE
 
 
 def poll_noise_level(interval: float) -> Generator[float, None, None]:
