@@ -1,20 +1,23 @@
 import pyaudio
 import numpy as np
 from typing import Generator
-from util import seconds_to_frames, signal_decibel, SAMPLE_RATE
+from util import seconds_to_frames, signal_decibel, DEFAULT_SAMPLE_RATE
 
 
-def poll_noise_level(interval: float) -> Generator[float, None, None]:
+def poll_noise_level(
+    interval: float, sample_rate=DEFAULT_SAMPLE_RATE
+) -> Generator[float, None, None]:
     n_buffer_frames = seconds_to_frames(interval)
     with pyaudio.PyAudio().open(
         format=pyaudio.paFloat32,
         channels=1,
-        rate=SAMPLE_RATE,
+        rate=sample_rate,
         input=True,
         frames_per_buffer=n_buffer_frames,
     ) as stream:
         while True:
-            data = np.frombuffer(stream.read(n_buffer_frames), dtype=np.float32)
+            data = np.frombuffer(stream.read(
+                n_buffer_frames), dtype=np.float32)
             yield signal_decibel(data)
 
 
