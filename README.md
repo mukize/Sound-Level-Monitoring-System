@@ -1,7 +1,7 @@
 
 # Sound Level Monitor System
 
-Server and client code to monitor sound intensity levels.
+Server and client code to monitor sound intensity levels in a room remotely.
 
 ## Installation
 
@@ -15,7 +15,9 @@ Server and client code to monitor sound intensity levels.
 pip install -r server_requirements.txt
 ```
 
-### Usage
+## Usage
+
+### Server
 
 ```sh
 python src/server.py
