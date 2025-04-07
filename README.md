@@ -15,6 +15,8 @@ Server and client code to monitor sound intensity levels in a room remotely.
 pip install -r server_requirements.txt
 ```
 
+Copy `.example_env` to `.env` and change desired host and port.
+
 ## Usage
 
 ### Server

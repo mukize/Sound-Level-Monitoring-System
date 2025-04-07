@@ -1,9 +1,11 @@
+import os
 import socket
 import concurrent.futures
 from soundcard import poll_noise_level
+from dotenv import load_dotenv
 
-HOST = "127.0.0.1"
-PORT = 1234
+DEFAULT_HOST = "127.0.0.1"
+DEFAULT_PORT = "1234"
 
 
 def connection_handler(addr, sock: socket.socket):
@@ -19,9 +21,12 @@ def connection_handler(addr, sock: socket.socket):
 
 
 def main():
+    load_dotenv()
+    host = os.getenv("SERVER_HOST", DEFAULT_HOST)
+    port = int(os.getenv("SERVER_PORT", DEFAULT_PORT))
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
-        sock.bind((HOST, PORT))
-        print(f"Listening on {HOST}:{PORT}")
+        sock.bind((host, port))
+        print(f"Listening on {DEFAULT_HOST}:{DEFAULT_PORT}")
         with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
             while True:
                 _, addr = sock.recvfrom(1024)

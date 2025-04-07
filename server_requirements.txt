@@ -1,2 +1,3 @@
 soundcard
 numpy
+python-dotenv
