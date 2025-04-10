@@ -5,5 +5,6 @@ pkgs.mkShell {
 		python312Packages.numpy
 		python312Packages.soundcard
 		python312Packages.python-dotenv
+		python312Packages.gpiozero
 	];
 }
