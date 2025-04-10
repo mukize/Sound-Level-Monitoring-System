@@ -1,7 +1,7 @@
 import os
 import socket
 import concurrent.futures
-from soundcard import poll_noise_level
+from soundcard_audio import poll_noise_level
 from dotenv import load_dotenv
 
 DEFAULT_HOST = "127.0.0.1"
