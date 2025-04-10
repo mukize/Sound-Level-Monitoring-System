@@ -1,3 +1,4 @@
-soundcard
 numpy
 python-dotenv
+soundcard
+RPi.GPIO
