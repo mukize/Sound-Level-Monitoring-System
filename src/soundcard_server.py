@@ -1,5 +1,6 @@
 import socket
 from os import getenv
+
 import soundcard as sc
 from dotenv import load_dotenv
 import util
@@ -18,7 +19,9 @@ def conn_handler(addr, sock: socket.socket):
             n_buffer_frames = seconds_to_frames(INTERVAL)
             while True:
                 data = mic.record(n_buffer_frames).flatten()
-                sock.sendto(str(signal_decibel(data)).encode(), addr)
+                noise_detected = signal_decibel(data) > 50
+                if noise_detected:
+                    sock.sendto("Noise Detected.".encode(), addr)
     except Exception as e:
         error = e
     print(f"Stopped sending data to {addr} ({error})")

@@ -12,7 +12,7 @@ def conn_handler(addr, sock: socket.socket):
     print(f"Sending data to {addr}")
     while True:
         if sensor.value:
-            sock.sendto("Sound detected.".encode(), addr)
+            sock.sendto("Noise detected.".encode(), addr)
     print(f"Stopped sending data to {addr}")
 
 

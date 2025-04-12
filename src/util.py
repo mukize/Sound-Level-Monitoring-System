@@ -9,7 +9,7 @@ from typing import Callable
 
 DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = "1234"
-DEFAULT_CHANNEL = "1234"
+DEFAULT_CHANNEL = 17
 DEFAULT_SAMPLE_RATE: int = 48000
 
 
@@ -37,7 +37,7 @@ def udp_socket(connection_handler: Callable[[tuple, socket.socket], None]):
     port = int(os.getenv("SERVER_PORT", DEFAULT_PORT))
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
         sock.bind((host, port))
-        print(f"Listening on {DEFAULT_HOST}:{DEFAULT_PORT}")
+        print(f"Listening on {host}:{port}")
         with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
             while True:
                 _, addr = sock.recvfrom(1024)
