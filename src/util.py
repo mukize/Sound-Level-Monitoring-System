@@ -7,7 +7,6 @@ from typing import Callable
 
 DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = "1234"
-PI_CHANNEL = 17
 
 
 def udp_socket(connection_handler: Callable[[tuple, socket.socket], None]):

@@ -2,12 +2,12 @@ from gpiozero import DigitalInputDevice
 from dotenv import load_dotenv
 from os import getenv
 import socket
-from util import PI_CHANNEL, udp_socket
+from util import udp_socket
 
 
 def main():
     load_dotenv()
-    sensor = DigitalInputDevice(getenv("PI_CHANNEL", PI_CHANNEL))
+    sensor = DigitalInputDevice(getenv("PI_CHANNEL", 17))
 
     def conn_handler(addr, sock: socket.socket):
         print(f"Sending data to {addr}")
