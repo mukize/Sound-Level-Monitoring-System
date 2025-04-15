@@ -21,9 +21,8 @@ def main():
         print(f"Sending data to {addr}")
         error = ""
         try:
-            n_buffer_frames = int(sample_rate * 0.2)
             while True:
-                data = mic.record(n_buffer_frames).flatten()
+                data = mic.record(int(sample_rate * 0.2)).flatten()
                 noise_detected = signal_decibel(data) > 50
                 if noise_detected:
                     sock.sendto("Noise Detected.".encode(), addr)
